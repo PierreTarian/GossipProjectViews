@@ -27,7 +27,8 @@ end
       description: Faker::Games::LeagueOfLegends.quote,
       email: Faker::Internet.email,
       age: rand(10..99),
-      city_id: City.all.sample.id
+      city_id: City.all.sample.id,
+      password_digest: Faker::Lorem.sentence
     );
 end
 
@@ -53,9 +54,10 @@ end
     );
   end
 
-  50.times do
-    private_messages = PrivateMessage.create!(
-        content: Faker::Quote.famous_last_words,
+    40.times do
+      comment = Comment.create!(
+        content: Faker::Lorem.paragraph,
+        gossip_id: Gossip.all.sample.id,
         user_id: User.all.sample.id
-    );
+      );
   end
